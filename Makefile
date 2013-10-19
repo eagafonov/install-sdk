@@ -198,6 +198,16 @@ getcodesourcery:
 		$(M_ECHO) "" ; \
 	fi
 
+sync: check_gclient
+	$(M_ECHO) "\033[1;34mSync sources\033[0m"
+	gclient sync
+
+check_gclient:
+	$(V)if [ ! -f $(shell pwd)/../.gclient ] ; \
+	then \
+		$(M_ECHO) "Can't find .gclient. Looks like gclient is not used to fetch SDK source"; \
+		exit 1; \
+	fi
 
 ###########################################################
 
